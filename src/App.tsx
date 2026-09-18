@@ -1,4 +1,9 @@
 import "./App.css";
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
+import BreakingNews from "./components/BreakingNews";
+import NewsCard from "./components/NewsCard";
+import Footer from "./components/Footer";
 
 const noticias = [
   {
@@ -24,39 +29,12 @@ const noticias = [
 function App() {
   return (
     <div className="site">
-      <header className="header">
-        <div className="container header-content">
-          <div className="logo">
-            <span>AMAZONAS</span>
-            <strong>AGORA</strong>
-          </div>
+      <Header />
 
-          <button className="menu-button">☰</button>
-        </div>
-      </header>
-
-      <nav className="nav">
-        <div className="container nav-content">
-          <a href="#">Manaus</a>
-          <a href="#">Amazonas</a>
-          <a href="#">Política</a>
-          <a href="#">Economia</a>
-          <a href="#">Segurança</a>
-          <a href="#">Esportes</a>
-          <a href="#">Cultura</a>
-          <a href="#">Mais</a>
-        </div>
-      </nav>
+      <Navbar />
 
       <main>
-        <section className="breaking">
-          <div className="container breaking-content">
-            <span className="breaking-label">ÚLTIMAS</span>
-            <p>
-              Acompanhe as principais notícias de Manaus e do Amazonas
-            </p>
-          </div>
-        </section>
+        <BreakingNews />
 
         <section className="container hero-section">
           <article className="hero">
@@ -90,20 +68,16 @@ function App() {
           </div>
 
           <div className="news-grid">
-            {noticias.map((noticia) => (
-              <article className="news-card" key={noticia.titulo}>
-                <img src={noticia.imagem} alt={noticia.titulo} />
-
-                <div className="news-card-content">
-                  <span>{noticia.categoria}</span>
-                  <h3>{noticia.titulo}</h3>
-                  <p>
-                    Conteúdo demonstrativo para a primeira versão do portal.
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
+  {noticias.map((noticia) => (
+    <NewsCard
+      key={noticia.titulo}
+      categoria={noticia.categoria}
+      titulo={noticia.titulo}
+      imagem={noticia.imagem}
+      descricao="Conteúdo demonstrativo para a primeira versão do portal."
+    />
+  ))}
+</div>
         </section>
 
         <section className="newsletter">
@@ -125,22 +99,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-logo">
-            <span>AMAZONAS</span>
-            <strong>AGORA</strong>
-          </div>
-
-          <p>
-            Portal de notícias de Manaus e do Amazonas.
-          </p>
-
-          <small>
-            © 2026 Amazonas Agora — Conteúdo demonstrativo.
-          </small>
-        </div>
-      </footer>
+    <Footer />
     </div>
   );
 }
